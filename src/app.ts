@@ -8,15 +8,10 @@ app.use(express.json());
 
 
 app.get("/", async (req: Request, res: Response) => {
-
-    // OR AND SQL
-    //
-    let deleteUser = await prisma.user.deleteMany({
-        where : {
-            age : 30
-        }
+    let deletedUser = await prisma.user.delete({
+        where : {id : 3}
     })
-    res.json(deleteUser);
+    res.json(deletedUser);
 })
 
 
@@ -86,4 +81,53 @@ app.listen(3000, () => {
     //         contains : "@gmail.com"
     //     }},
     //     data : {age : 30}
+    // })
+
+
+
+
+    // OR AND SQL
+    //
+    // let deleteUser = await prisma.user.deleteMany({
+    //     where : {
+    //         age : 30
+    //     }
+    // })
+
+
+
+    // let result = await prisma.user.create({
+        //     data : {
+        //         firstName : "Asad",
+        //         lastName : "Javed",
+        //         age : 22,
+        //         profile : {
+        //             create : {
+        //                 email : "asad@gmail.com"
+        //             }
+        //         }
+        //     }
+        // })
+
+
+        // let allUsers = await prisma.user.findMany({
+        //     include : {
+        //         profile : true
+        //     }
+        // })
+
+
+        // let user = await prisma.user.create({
+        //     data  : {
+        //         firstName : "Ahmed",
+        //         lastName : "Hafiz",
+        //         age : 40
+        //     }
+        // })
+
+
+         // let profile = await prisma.profile.create({
+    //     data : {
+    //         email : "jhon@gmail.com",
+    //     }
     // })

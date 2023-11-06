@@ -10,10 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ONE TO ONE ONE USER CAN HAVE ONLY ONE PROFILE
 model User {
   id Int @id @default(autoincrement())
   firstName String
   lastName String
-  email String @unique
   age Int
+  profile Profile? @relation(fields: [profileId],references: [id] , onDelete: SetNull)
+  profileId Int? @unique
+
+}
+
+
+model Profile {
+  id Int @id @default(autoincrement())
+  email String
+  user User?
 }
