@@ -8,10 +8,10 @@ app.use(express.json());
 
 
 app.get("/", async (req: Request, res: Response) => {
-    let deletedUser = await prisma.user.delete({
-        where : {id : 3}
+    let userDeleted = await prisma.user.delete({
+        where : {id : 4}
     })
-    res.json(deletedUser);
+    res.json(userDeleted);
 })
 
 
@@ -129,5 +129,36 @@ app.listen(3000, () => {
          // let profile = await prisma.profile.create({
     //     data : {
     //         email : "jhon@gmail.com",
+    //     }
+    // })
+
+
+    // let user = await prisma.user.create({
+    //     data : {
+    //         firstName : "Afaq",
+    //         lastName : "Javed",
+    //         age : 22,
+    //         todos : {
+    //             createMany : {
+    //                 data : [
+    //                     {title : "Learn Prisma" , description : "Learn Prisma"},
+    //                     {title : "Learn Nodejs" , description : "Learn NodeJs"},
+    //                 ]
+    //             }
+    //         }
+
+    //     }
+    // })
+
+
+    // let allUsers = await prisma.user.findMany({
+    //     include : {todos : true}
+    // })
+
+
+    // let todo = await prisma.todo.create({
+    //     data : {
+    //         title : "Learn Python",
+    //         description : "Learn Python",
     //     }
     // })
